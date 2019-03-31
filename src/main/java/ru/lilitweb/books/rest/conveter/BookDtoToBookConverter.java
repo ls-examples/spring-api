@@ -22,7 +22,7 @@ public class BookDtoToBookConverter implements Converter<BookDto, Book> {
                 source.getDescription(),
                 new Author(source.getAuthor())
         );
-
+        book.setId(source.getId());
         book.setGenres(genres);
 
         return book;

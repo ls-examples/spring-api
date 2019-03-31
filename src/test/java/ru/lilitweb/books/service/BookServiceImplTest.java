@@ -9,7 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import ru.lilitweb.books.domain.Author;
 import ru.lilitweb.books.domain.Book;
 import ru.lilitweb.books.domain.Genre;
-import ru.lilitweb.books.repostory.BookRepository;
+import ru.lilitweb.books.repository.BookRepository;
 
 import java.util.Arrays;
 import java.util.Collections;

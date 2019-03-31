@@ -1,4 +1,4 @@
-package ru.lilitweb.books.repostory;
+package ru.lilitweb.books.repository;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

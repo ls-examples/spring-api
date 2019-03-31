@@ -4,10 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import ru.lilitweb.books.domain.Author;
-import ru.lilitweb.books.domain.Book;
-import ru.lilitweb.books.domain.Comment;
 import ru.lilitweb.books.domain.User;
+import ru.lilitweb.books.repository.UserRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
 

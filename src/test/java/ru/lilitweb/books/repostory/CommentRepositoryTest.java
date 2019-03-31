@@ -8,6 +8,7 @@ import ru.lilitweb.books.domain.Author;
 import ru.lilitweb.books.domain.Book;
 import ru.lilitweb.books.domain.Comment;
 import ru.lilitweb.books.domain.User;
+import ru.lilitweb.books.repository.CommentRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
 

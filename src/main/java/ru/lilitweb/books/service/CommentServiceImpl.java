@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.lilitweb.books.domain.Book;
 import ru.lilitweb.books.domain.Comment;
 import ru.lilitweb.books.domain.User;
-import ru.lilitweb.books.repostory.CommentRepository;
+import ru.lilitweb.books.repository.CommentRepository;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;

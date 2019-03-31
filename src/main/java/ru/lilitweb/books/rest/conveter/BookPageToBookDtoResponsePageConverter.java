@@ -12,6 +12,9 @@ public class BookPageToBookDtoResponsePageConverter implements Converter<Page<Bo
 
     @Override
     public ResponsePage<BookDto> convert(Page<Book> source) {
+        if (source == null) {
+            return null;
+        }
         ResponsePage<BookDto> responsePage = new ResponsePage<BookDto>();
         responsePage.setElements(source.get()
                 .map(book -> (new BookToBookDtoConverter()).convert(book))
