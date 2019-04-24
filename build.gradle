@@ -28,7 +28,7 @@ dependencies {
     compile group: 'org.projectlombok', name: 'lombok'
     compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
     compile group: 'org.springframework.shell', name: 'spring-shell-starter', version: '2.0.0.RELEASE'
     compile group: 'org.springframework.shell', name: 'spring-shell-starter'
     compile group: 'org.hibernate.validator', name: 'hibernate-validator'
