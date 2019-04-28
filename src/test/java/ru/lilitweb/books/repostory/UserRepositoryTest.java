@@ -20,14 +20,14 @@ class UserRepositoryTest {
 
     @Test
     void add() {
-        User user = new User("some comment author");
+        User user = new User("some comment author", "useradd@gmail.com");
         repository.save(user);
         assertNotEquals("", user.getId());
     }
 
     @Test
     void update() {
-        User user = new User("some comment author");
+        User user = new User("some comment author", "userupdate@gmail.com");
         mongoTemplate.save(user);
         assertNotEquals("", user.getId());
 

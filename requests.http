@@ -1,14 +1,12 @@
 ### Options
-OPTIONS http://localhost:8080/api/v1/books
-
-### Book list
-GET http://localhost:8080/books
+OPTIONS http://localhost:8080/api/v1/book
 
 ### Book list sorted
-GET http://localhost:8080/api/v1/books?sort=asc,createdAt
+GET http://localhost:8080/api/v1/book?sort=asc,createdAt
 
 ### Book view
 GET http://localhost:8080/api/v1/book/5c803be45a0f745d98a2abf3
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsaWxpdDI5OTBAZ21haWwuY29tIiwiaXNzIjoiYXV0aDAiLCJleHAiOjE1NTY0MTY1NDV9.rDgjwTd9qgEl78LWVddvFu45j-rq-YIAezdys0-7gBc
 
 ### Head
 HEAD http://localhost:8080/api/v1/book/5c803be45a0f745d98a2abf3
@@ -17,8 +15,18 @@ HEAD http://localhost:8080/api/v1/book/5c803be45a0f745d98a2abf3
 GET http://localhost:8080/api/v1/book/genres
 
 ### Add book
+POST http://localhost:8080/api/v1/signin
+Content-Type: application/json
+
+{
+  "email": "admin3@gmail.com",
+  "password": "admin"
+}
+
+### Add book
 POST http://localhost:8080/api/v1/book
 Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjNAZ21haWwuY29tIiwiaXNzIjoiYXV0aDAiLCJleHAiOjE1NTY0MTcxMTJ9.YwrSZkPPd7lFcLf-w56YzS1ASlWGpvUDoUKVBDwwB3c
 
 {
   "title": "some title",

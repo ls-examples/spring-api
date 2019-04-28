@@ -5,6 +5,7 @@
 - Parameters validation
 - Pagination
 - Converters
+- Spring Security
 
 # Api
 ## Documentation

@@ -34,7 +34,10 @@ dependencies {
     compile group: 'org.hibernate.validator', name: 'hibernate-validator'
     compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
     compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-security'
+    implementation 'com.auth0:java-jwt:3.8.0'
 
+    testCompile group: 'org.springframework.security', name: 'spring-security-test'
     testCompile group: 'org.mockito', name: 'mockito-junit-jupiter', version: '2.23.0'
     testCompile group: 'org.assertj', name: 'assertj-db', version: '1.2.0'
     testCompile group: 'de.flapdoodle.embed', name: 'de.flapdoodle.embed.mongo'

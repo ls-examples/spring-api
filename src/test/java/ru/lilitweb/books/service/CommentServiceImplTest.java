@@ -30,7 +30,7 @@ class CommentServiceImplTest {
 
     @Test
     void addComment() {
-        User user = new User("some comment author");
+        User user = new User("some comment author", "commentaddemail");
         Book book = new Book(
                 "Руслан и Людмила",
                 2019,

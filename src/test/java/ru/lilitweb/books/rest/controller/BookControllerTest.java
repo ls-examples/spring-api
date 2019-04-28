@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.data.mongo.AutoConfigureDataMongo;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
@@ -11,6 +12,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -33,6 +35,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @WebMvcTest
 @Import(WebConfig.class)
+@AutoConfigureDataMongo
 public class BookControllerTest {
     @Autowired
     private MockMvc mvc;
@@ -50,11 +53,15 @@ public class BookControllerTest {
                 Sort.by(Sort.Direction.ASC, "createdAt")
         );
         when(bookService.search(Optional.empty(), pageRequest)).thenReturn(new PageImpl<>(Collections.singletonList(book)));
-        MvcResult mvcResult = this.mvc.perform(get("/api/v1/books?sort=asc,createdAt"))
+        MvcResult mvcResult = this.mvc.perform(get("/api/v1/book?sort=asc,createdAt"))
                 .andExpect(status().isOk())
                 .andReturn();
     }
 
+    @WithMockUser(
+            username = "admin",
+            authorities = {"ROLE_USER"}
+    )
     @Test
     public void viewBook() throws Exception {
         String id = "1";
@@ -67,6 +74,10 @@ public class BookControllerTest {
 
     }
 
+    @WithMockUser(
+            username = "admin",
+            authorities = {"ROLE_ADMIN"}
+    )
     @Test
     public void update() throws Exception {
         List<String> genres = Arrays.asList("поэзия", "new");
@@ -102,6 +113,10 @@ public class BookControllerTest {
         return book;
     }
 
+    @WithMockUser(
+            username = "admin",
+            authorities = {"ROLE_ADMIN"}
+    )
     @Test
     public void deleteBook() throws Exception {
         String id = "1";
@@ -112,6 +127,10 @@ public class BookControllerTest {
         verify(bookService, atLeastOnce()).delete(id);
     }
 
+    @WithMockUser(
+            username = "admin",
+            authorities = {"ROLE_ADMIN"}
+    )
     @Test
     public void create() throws Exception {
         List<String> genres = Arrays.asList("поэзия", "new");

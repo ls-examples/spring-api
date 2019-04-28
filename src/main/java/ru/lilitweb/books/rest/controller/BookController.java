@@ -58,7 +58,7 @@ public class BookController {
 
 
     @ApiOperation("Book search")
-    @GetMapping("/books")
+    @GetMapping("/book")
     public ResponseEntity<ResponsePage<BookDto>> index(
             @ApiParam(value = "Sort",
                     required = true,
