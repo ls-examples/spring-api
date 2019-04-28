@@ -14,13 +14,15 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import ru.lilitweb.books.repository.UserRepository;
-import ru.lilitweb.books.security.JwtConfigurer;
-import ru.lilitweb.books.security.JwtTokenProvider;
-import ru.lilitweb.books.security.RestAuthenticationEntryPoint;
-import ru.lilitweb.books.security.UserDetailsServiceImpl;
+import ru.lilitweb.books.security.*;
+import ru.lilitweb.books.service.UserService;
+import ru.lilitweb.books.service.UserServiceImpl;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    @Autowired
+    JwtTokenProvider jwtTokenProvider;
+
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -42,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .regexMatchers(HttpMethod.GET, "/api/v1/book/[A-Za-z0-9]+").authenticated()
                 .antMatchers("/**").permitAll()
                 .and()
-                .apply(new JwtConfigurer(new JwtTokenProvider()));
+                .apply(new JwtConfigurer(jwtTokenProvider));
     }
 
     @Bean
@@ -56,8 +58,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
+    public UserService userService (UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        return new UserServiceImpl(userRepository, passwordEncoder);
+    }
+
+    @Bean
     public JwtTokenProvider jwtTokenProvider() {
-        return new JwtTokenProvider();
+        return new JwtTokenProviderImpl();
     }
 
     @Autowired

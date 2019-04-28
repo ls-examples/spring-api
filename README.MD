@@ -10,3 +10,7 @@
 # Api
 ## Documentation
 /swagger-ui.html
+
+
+# Add admin
+```admin-create --email "admin@gmail.com" --password "password"```
